@@ -1,0 +1,269 @@
+        <p-dialog [(visible)]="editDialog" [style]="{width: '70vw'}" header="{{'declarationIsTabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="{{'declarationIsTabPan' | translate}}">
+                        <div class="grid">
+
+
+                                        <div class="field col-12 md:col-3">
+                                            <label for="1">{{'declarationIsDateDeclaration' | translate}}</label>
+                                            <p-calendar appendTo="body" id="1"   [showTime]="true" [showSeconds]="false" placeholder="{{'declarationIsDateDeclaration' | translate}}"  [(ngModel)]="item.dateDeclaration"
+                                                      >
+                                            </p-calendar>
+                                            
+                                        </div>
+
+                                        <div class="field col-12 md:col-3">
+                                            <label for="2">{{'declarationIsTrimistre' | translate}}</label>
+                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="2"
+                                                           placeholder="{{'declarationIsTrimistre' | translate}}" [(ngModel)]="item.trimistre"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="field col-12 md:col-3">
+                                            <label for="3">{{'declarationIsAnnee' | translate}}</label>
+                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="3"
+                                                           placeholder="{{'declarationIsAnnee' | translate}}" [(ngModel)]="item.annee"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                    <div class="field col-11 md:col-2">
+                                            <label for="4">{{'declarationIsSociete' | translate}}</label>
+                                            <p-dropdown   appendTo="body" [options]="societes" [(ngModel)]="item.societe" id="4"[filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true" optionLabel="ice" placeholder="{{'declarationIsSociete' | translate}}"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+
+                                        <div class="field col-12 md:col-3">
+                                            <label for="5">{{'declarationIsTotalCharge' | translate}}</label>
+                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="5"
+                                                           placeholder="{{'declarationIsTotalCharge' | translate}}" [(ngModel)]="item.totalCharge"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="field col-12 md:col-3">
+                                            <label for="6">{{'declarationIsTotalProduit' | translate}}</label>
+                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="6"
+                                                           placeholder="{{'declarationIsTotalProduit' | translate}}" [(ngModel)]="item.totalProduit"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="field col-12 md:col-3">
+                                            <label for="7">{{'declarationIsResultatAvantImpot' | translate}}</label>
+                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="7"
+                                                           placeholder="{{'declarationIsResultatAvantImpot' | translate}}" [(ngModel)]="item.resultatAvantImpot"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                    <div class="field col-11 md:col-2">
+                                            <label for="8">{{'declarationIsTauxIs' | translate}}</label>
+                                            <p-dropdown   appendTo="body" [options]="tauxIss" [(ngModel)]="item.tauxIs" id="8"[filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true" optionLabel="id" placeholder="{{'declarationIsTauxIs' | translate}}"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button" icon="pi pi-plus" (click)="openCreateTauxIs('TauxIs')" class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                                        <div class="field col-12 md:col-3">
+                                            <label for="9">{{'declarationIsMontantImpot' | translate}}</label>
+                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="9"
+                                                           placeholder="{{'declarationIsMontantImpot' | translate}}" [(ngModel)]="item.montantImpot"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="field col-12 md:col-3">
+                                            <label for="10">{{'declarationIsResultatApresImpot' | translate}}</label>
+                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="10"
+                                                           placeholder="{{'declarationIsResultatApresImpot' | translate}}" [(ngModel)]="item.resultatApresImpot"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+
+                        </div>
+                    </p-tabPanel>
+
+                            <p-tabPanel header="declarationIsFactureCharges">
+                                <p-tabView [(activeIndex)]="activeTab">
+                                    <p-tabPanel header="Création">
+                                        <div class="grid">
+                                                            <div class="field col-12 md:col-4">
+                                                                <label for="1">Date facuture</label>
+                                                                <p-calendar  appendTo="body" id="1" placeholder="Date facuture"  [showTime]="true" [showSeconds]="false"
+                                                                        [(ngModel)]="factureChargesElement.dateFacuture"  [showIcon]="true"  ></p-calendar>
+                                                                
+                                                            </div>
+                                                            <div class="field col-11 md:col-3">
+                                                                <label>Societe</label>
+                                                                <p-dropdown appendTo="body" [options]="societes" [(ngModel)]="factureChargesElement.societe"
+                                                                        id="2"  [filter]="true" filterMatchMode="contains" [showClear]="true"
+                                                                        optionLabel="ice" placeholder="Societe"  >
+                                                                </p-dropdown>
+                                                                
+                                                            </div>
+                                                            <div class="field col-12 md:col-4">
+                                                                <label for="3">Ice</label>
+                                                                <input appendTo="body" class="mb-2 mr-2" type="text" pInputText placeholder="Ice"
+                                                                       id="3" [(ngModel)]="factureChargesElement.ice"
+                                                                       autofocus   >
+                                                                
+                                                            </div>
+                                                            <div class="field col-12 md:col-4">
+                                                                <label for="4">Montant ht</label>
+                                                                <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="montantHt" [(ngModel)]="factureChargesElement.montantHt" placeholder="Montant ht"  ></p-inputNumber>
+                                                                
+                                                            </div>
+                                                            <div class="field col-12 md:col-4">
+                                                                <label for="5">Montant ttc</label>
+                                                                <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="montantTtc" [(ngModel)]="factureChargesElement.montantTtc" placeholder="Montant ttc"  ></p-inputNumber>
+                                                                
+                                                            </div>
+                                                            <div class="field col-12 md:col-4">
+                                                                <label for="6">Montant tva</label>
+                                                                <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="montantTva" [(ngModel)]="factureChargesElement.montantTva" placeholder="Montant tva"  ></p-inputNumber>
+                                                                
+                                                            </div>
+                                                <div class="field col-12 md:col-1">
+                                                    <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addFactureCharges()"></button>
+                                                </div>
+                                        </div>
+                                    </p-tabPanel>
+                                    <p-tabPanel header="Liste {{item.factureCharges?.length > 0 ? '(' + item.factureCharges?.length + ')' : ''}}">
+                                            <div class="card">
+                                                <p-table [value]="item.factureCharges" [scrollable]="true" scrollHeight="200px">
+                                                    <ng-template pTemplate="header">
+                                                        <tr>
+                                                                        <th>Date facuture</th>
+                                                                        <th>Societe</th>
+                                                                        <th>Ice</th>
+                                                                        <th>Montant ht</th>
+                                                                        <th>Montant ttc</th>
+                                                                        <th>Montant tva</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="body" let-p>
+                                                        <tr>
+                                                                        <td>{{p.dateFacuture | date: dateFormatColumn}}</td>
+                                                                    <td>{{p.societe?.ice}}</td>
+                                                                        <td>{{p.ice}}</td>
+                                                                        <td>{{p.montantHt}}</td>
+                                                                        <td>{{p.montantTtc}}</td>
+                                                                        <td>{{p.montantTva}}</td>
+                                                            <td>
+                                                                <button (click)="deleteFactureCharge(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger"></button>
+                                                                <button (click)="editFactureCharge(p)" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+                                                            </td>
+                                                        </tr>
+                                                    </ng-template>
+                                                </p-table>
+                                            </div>
+                                    </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+                            <p-tabPanel header="declarationIsFactureProduits">
+                                <p-tabView [(activeIndex)]="activeTab">
+                                    <p-tabPanel header="Création">
+                                        <div class="grid">
+                                                            <div class="field col-12 md:col-4">
+                                                                <label for="1">Date facuture</label>
+                                                                <p-calendar  appendTo="body" id="1" placeholder="Date facuture"  [showTime]="true" [showSeconds]="false"
+                                                                        [(ngModel)]="factureProduitsElement.dateFacuture"  [showIcon]="true"  ></p-calendar>
+                                                                
+                                                            </div>
+                                                            <div class="field col-11 md:col-3">
+                                                                <label>Societe</label>
+                                                                <p-dropdown appendTo="body" [options]="societes" [(ngModel)]="factureProduitsElement.societe"
+                                                                        id="2"  [filter]="true" filterMatchMode="contains" [showClear]="true"
+                                                                        optionLabel="ice" placeholder="Societe"  >
+                                                                </p-dropdown>
+                                                                
+                                                            </div>
+                                                            <div class="field col-12 md:col-4">
+                                                                <label for="3">Ice</label>
+                                                                <input appendTo="body" class="mb-2 mr-2" type="text" pInputText placeholder="Ice"
+                                                                       id="3" [(ngModel)]="factureProduitsElement.ice"
+                                                                       autofocus   >
+                                                                
+                                                            </div>
+                                                            <div class="field col-12 md:col-4">
+                                                                <label for="4">Montant ht</label>
+                                                                <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="montantHt" [(ngModel)]="factureProduitsElement.montantHt" placeholder="Montant ht"  ></p-inputNumber>
+                                                                
+                                                            </div>
+                                                            <div class="field col-12 md:col-4">
+                                                                <label for="5">Montant ttc</label>
+                                                                <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="montantTtc" [(ngModel)]="factureProduitsElement.montantTtc" placeholder="Montant ttc"  ></p-inputNumber>
+                                                                
+                                                            </div>
+                                                            <div class="field col-12 md:col-4">
+                                                                <label for="6">Montant tva</label>
+                                                                <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="montantTva" [(ngModel)]="factureProduitsElement.montantTva" placeholder="Montant tva"  ></p-inputNumber>
+                                                                
+                                                            </div>
+                                                <div class="field col-12 md:col-1">
+                                                    <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addFactureProduits()"></button>
+                                                </div>
+                                        </div>
+                                    </p-tabPanel>
+                                    <p-tabPanel header="Liste {{item.factureProduits?.length > 0 ? '(' + item.factureProduits?.length + ')' : ''}}">
+                                            <div class="card">
+                                                <p-table [value]="item.factureProduits" [scrollable]="true" scrollHeight="200px">
+                                                    <ng-template pTemplate="header">
+                                                        <tr>
+                                                                        <th>Date facuture</th>
+                                                                        <th>Societe</th>
+                                                                        <th>Ice</th>
+                                                                        <th>Montant ht</th>
+                                                                        <th>Montant ttc</th>
+                                                                        <th>Montant tva</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="body" let-p>
+                                                        <tr>
+                                                                        <td>{{p.dateFacuture | date: dateFormatColumn}}</td>
+                                                                    <td>{{p.societe?.ice}}</td>
+                                                                        <td>{{p.ice}}</td>
+                                                                        <td>{{p.montantHt}}</td>
+                                                                        <td>{{p.montantTtc}}</td>
+                                                                        <td>{{p.montantTva}}</td>
+                                                            <td>
+                                                                <button (click)="deleteFactureProduit(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger"></button>
+                                                                <button (click)="editFactureProduit(p)" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+                                                            </td>
+                                                        </tr>
+                                                    </ng-template>
+                                                </p-table>
+                                            </div>
+                                    </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+                </p-tabView>
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="grid-footer">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideEditDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="edit()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-taux-is-create-admin></app-taux-is-create-admin>
+
+
+    </p-dialog>

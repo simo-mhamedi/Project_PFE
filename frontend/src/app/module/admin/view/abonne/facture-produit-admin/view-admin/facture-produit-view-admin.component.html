@@ -1,0 +1,52 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'factureProduitTabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'factureProduitTabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-4">
+                        <label for="1">{{'Date facuture' | translate}}</label>
+                        <p-calendar id="1" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'Date facuture' | translate}}"  [(ngModel)]="item.dateFacuture" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="2">{{'Societe' | translate}}</label>
+                        <p-dropdown [options]="societes" [(ngModel)]="item.societe" id="2" [disabled]="true" optionLabel="ice" placeholder="{{'Societe' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="3">{{'Ice' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Ice' | translate}}" autofocus  id="3" [(ngModel)]="item.ice">
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="4">{{'Montant ht' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="4" [disabled]="true" placeholder="{{'Montant ht' | translate}}" [(ngModel)]="item.montantHt"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="5">{{'Montant ttc' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="5" [disabled]="true" placeholder="{{'Montant ttc' | translate}}" [(ngModel)]="item.montantTtc"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="6">{{'Montant tva' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="6" [disabled]="true" placeholder="{{'Montant tva' | translate}}" [(ngModel)]="item.montantTva"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="7">{{'Declaration is' | translate}}</label>
+                        <p-dropdown [options]="declarationIss" [(ngModel)]="item.declarationIs" id="7" [disabled]="true" optionLabel="id" placeholder="{{'Declaration is' | translate}}"></p-dropdown>
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="grid-footer">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+
