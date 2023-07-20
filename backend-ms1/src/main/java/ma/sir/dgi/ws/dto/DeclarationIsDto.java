@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 public class DeclarationIsDto  extends AuditBaseDto {
 
     private String dateDeclaration ;
+    private String dateDeclarationStr ;
     private Integer trimistre  = 0 ;
     private Integer annee  = 0 ;
     private BigDecimal totalCharge  ;
@@ -42,8 +43,16 @@ public class DeclarationIsDto  extends AuditBaseDto {
     public String getDateDeclaration(){
         return this.dateDeclaration;
     }
+    @Log
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
+    public String getDateDeclarationStr(){
+        return this.dateDeclarationStr;
+    }
     public void setDateDeclaration(String dateDeclaration){
         this.dateDeclaration = dateDeclaration;
+    }
+    public void setDateDeclarationStr(String dateDeclarationStr){
+        this.dateDeclarationStr = dateDeclarationStr;
     }
 
     @Log

@@ -1,5 +1,6 @@
 package ma.sir.dgi.service.facade.admin;
 
+import java.math.BigDecimal;
 import java.util.List;
 import ma.sir.dgi.bean.core.FactureCharge;
 import ma.sir.dgi.dao.criteria.core.FactureChargeCriteria;
@@ -16,6 +17,7 @@ public interface FactureChargeAdminService extends  IService<FactureCharge,Factu
     List<FactureCharge> findByDeclarationIsId(Long id);
     int deleteByDeclarationIsId(Long id);
 
+    BigDecimal calculChargeBySociete(String ice);
     HttpEntity<byte[]> createPdf(FactureChargeDto dto) throws Exception;
 
 

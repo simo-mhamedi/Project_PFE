@@ -25,7 +25,9 @@ export class DeclarationTvaService extends AbstractService<DeclarationTvaDto, De
         this.setHttp(http);
         this.setApi(environment.apiUrl + 'admin/declarationTva/');
     }
-
+    private baseUrl="http://localhost:8036/api/";
+    private _declarationTvaDto:DeclarationTvaDto;
+    private _declarationTvaDtos: Array<DeclarationTvaDto>
     public constrcutDto(): DeclarationTvaDto {
         return new DeclarationTvaDto();
     }
@@ -33,4 +35,32 @@ export class DeclarationTvaService extends AbstractService<DeclarationTvaDto, De
     public constrcutCriteria(): DeclarationTvaCriteria {
         return new DeclarationTvaCriteria();
     }
+
+    public declarationTva(declarationTvaDto:DeclarationTvaDto)
+    {
+        return this.http.post<number>(this.baseUrl+"tva/",declarationTvaDto);
+    }
+
+    get declarationTvaDto(): DeclarationTvaDto {
+        if (this._declarationTvaDto == null) {
+          this._declarationTvaDto = new DeclarationTvaDto();
+        }
+        return this._declarationTvaDto;
+      }
+    
+      set declarationTvaDto(value: DeclarationTvaDto) {
+        this._declarationTvaDto = value;
+      }
+      get declarationTvaDtos(): Array<DeclarationTvaDto> {
+        if (this._declarationTvaDtos == null) {
+          this._declarationTvaDtos = new Array<DeclarationTvaDto>();
+        }
+        return this._declarationTvaDtos;
+      }
+    
+      set declarationTvaDtos(value: Array<DeclarationTvaDto>) {
+        this._declarationTvaDtos = value;
+      }
+
+    
 }

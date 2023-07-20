@@ -33,7 +33,6 @@ public class BilanAdminServiceImpl extends AbstractServiceImpl<Bilan,BilanHistor
 BilanHistoryDao> implements BilanAdminService {
     public static final String TEMPLATE = "template/bilan.vm";
     public static final String FILE_NAME = "bilan.pdf";
-
 public static final List<Attribute> ATTRIBUTES = new ArrayList<>();
     static{
     ATTRIBUTES.add(new Attribute("id","Long"));

@@ -13,5 +13,8 @@ public interface FactureProduitDao extends AbstractRepository<FactureProduit,Lon
     int deleteBySocieteId(Long id);
     List<FactureProduit> findByDeclarationIsId(Long id);
     int deleteByDeclarationIsId(Long id);
+    List<FactureProduit> findBySocieteIdAndSocieteDernierAnneePayerTvaAndSocieteDernierTrimestrePayerTva
+            (Long id,Integer annee,Integer Trimestre);
+
 
 }

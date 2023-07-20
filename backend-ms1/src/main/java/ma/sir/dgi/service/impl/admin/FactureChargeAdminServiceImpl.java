@@ -11,6 +11,8 @@ import ma.sir.dgi.service.facade.admin.FactureChargeAdminService;
 import ma.sir.dgi.zynerator.service.AbstractServiceImpl;
 import ma.sir.dgi.zynerator.util.ListUtil;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 import ma.sir.dgi.zynerator.util.VelocityPdf;
@@ -51,7 +53,25 @@ FactureChargeHistoryDao> implements FactureChargeAdminService {
         return dao.deleteByDeclarationIsId(id);
     }
 
+    public BigDecimal calculChargeBySociete(String ice)
+    {
+        List<FactureCharge> factureCharges = dao.findBySocieteIce(ice);
+        BigDecimal total= BigDecimal.ZERO;
+        for (FactureCharge factureCharge : factureCharges) {
+            total= total.add(factureCharge.getMontantHt());
+        }
+        return total;
+    }
 
+    public BigDecimal calculTvaBySociete(String ice)
+    {
+        List<FactureCharge> factureCharges = dao.findBySocieteIce(ice);
+        BigDecimal total= BigDecimal.ZERO;
+        for (FactureCharge factureCharge : factureCharges) {
+            total= total.add(factureCharge.getMontantTva());
+        }
+        return total;
+    }
 
 
     public void configure() {

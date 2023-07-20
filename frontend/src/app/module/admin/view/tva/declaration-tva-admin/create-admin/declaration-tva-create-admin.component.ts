@@ -31,8 +31,11 @@ export class DeclarationTvaCreateAdminComponent extends AbstractCreateController
 }
 
 
-
-
+    public declarationTva(){        
+        this.declarationTvaService.declarationTva(this.item).subscribe(data=>{
+            console.log(data);
+        })
+    }
 
     public setValidation(value: boolean){
     }

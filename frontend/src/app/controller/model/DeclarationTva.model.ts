@@ -7,6 +7,7 @@ export class DeclarationTvaDto  extends BaseDto{
 
     public id: number;
    public dateDeclaration: Date;
+   public dateDeclarationStr: string;
    public trimistre: number;
    public annee: number;
     public totalTvaCollecte: number;

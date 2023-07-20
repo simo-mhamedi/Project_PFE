@@ -1,5 +1,6 @@
 package ma.sir.dgi.dao.facade.core;
 
+import ma.sir.dgi.bean.core.FactureProduit;
 import ma.sir.dgi.zynerator.repository.AbstractRepository;
 import ma.sir.dgi.bean.core.FactureCharge;
 import org.springframework.stereotype.Repository;
@@ -13,5 +14,7 @@ public interface FactureChargeDao extends AbstractRepository<FactureCharge,Long>
     int deleteBySocieteId(Long id);
     List<FactureCharge> findByDeclarationIsId(Long id);
     int deleteByDeclarationIsId(Long id);
-
+    List<FactureCharge> findBySocieteIce(String ice);
+    List<FactureCharge> findBySocieteIdAndSocieteDernierAnneePayerTvaAndSociete_DernierTrimestrePayerTva
+            (Long id,Integer annee,Integer Trimestre);
 }

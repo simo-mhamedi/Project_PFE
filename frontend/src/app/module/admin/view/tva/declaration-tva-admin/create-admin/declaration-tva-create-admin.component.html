@@ -6,7 +6,7 @@
 
                                                 <div class="field col-12 md:col-4">
                                                     <label for="1">{{'declarationTvaDateDeclaration' | translate}}</label>
-                                                    <p-calendar appendTo="body" id="1"  [showTime]="true" [showSeconds]="false" placeholder="{{'declarationTvaDateDeclaration' | translate}}"  [(ngModel)]="item.dateDeclaration"
+                                                    <p-calendar appendTo="body" id="1"  [showTime]="true" [showSeconds]="false" placeholder="{{'declarationTvaDateDeclaration' | translate}}"  [(ngModel)]="item.dateDeclarationStr"
                                                             dateFormat="{{dateFormat}}"  >
                                                     </p-calendar>
                                                     
@@ -33,13 +33,13 @@
                                                 </p-dropdown>
                                                 
                                             </div>
-                                                <div class="field col-12 md:col-4">
+                                                <!-- <div class="field col-12 md:col-4">
                                                     <label for="5">{{'declarationTvaTotalTvaCollecte' | translate}}</label>
                                                     <p-inputNumber class="mb-2 mr-2" id="5" placeholder="{{'declarationTvaTotalTvaCollecte' | translate}}" [(ngModel)]="item.totalTvaCollecte"  >
                                                     </p-inputNumber>
                                                     
-                                                </div>
-
+                                                </div> -->
+<!-- 
                                                 <div class="field col-12 md:col-4">
                                                     <label for="6">{{'declarationTvaTotalTvaDue' | translate}}</label>
                                                     <p-inputNumber class="mb-2 mr-2" id="6" placeholder="{{'declarationTvaTotalTvaDue' | translate}}" [(ngModel)]="item.totalTvaDue"  >
@@ -70,7 +70,7 @@
                                                     <p-inputNumber class="mb-2 mr-2" id="9" placeholder="{{'declarationTvaMontantTva' | translate}}" [(ngModel)]="item.montantTva"  >
                                                     </p-inputNumber>
                                                     
-                                                </div>
+                                                </div> -->
 
                                 </div>
                             </p-tabPanel>
@@ -82,7 +82,7 @@
             <ng-template pTemplate="footer" >
                 <div class="grid-step">
                         <div style="margin-left: auto;">
-                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check" style="margin:10px" (click)="declarationTva()"></button>
                         </div>
                         <div>
                             <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
