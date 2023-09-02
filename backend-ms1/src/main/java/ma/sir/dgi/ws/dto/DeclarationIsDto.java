@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DeclarationIsDto  extends AuditBaseDto {
+    public class DeclarationIsDto  extends AuditBaseDto {
 
     private String dateDeclaration ;
     private String dateDeclarationStr ;

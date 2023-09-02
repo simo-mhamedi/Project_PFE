@@ -8,6 +8,7 @@ import ma.sir.dgi.bean.history.DeclarationIsHistory;
 import ma.sir.dgi.dao.criteria.core.DeclarationIsCriteria;
 import ma.sir.dgi.dao.criteria.history.DeclarationIsHistoryCriteria;
 import ma.sir.dgi.service.facade.admin.DeclarationIsAdminService;
+import ma.sir.dgi.service.impl.admin.DeclarationIsService;
 import ma.sir.dgi.ws.converter.DeclarationIsConverter;
 import ma.sir.dgi.ws.dto.DeclarationIsDto;
 import ma.sir.dgi.zynerator.controller.AbstractController;
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import ma.sir.dgi.zynerator.process.Result;
 
 import org.springframework.http.HttpEntity;
 
@@ -29,9 +29,16 @@ import ma.sir.dgi.zynerator.dto.FileTempDto;
 @Api("Manages declarationIs services")
 @RestController
 @RequestMapping("/api/admin/declarationIs/")
-public class DeclarationIsRestAdmin  extends AbstractController<DeclarationIs, DeclarationIsDto, DeclarationIsHistory, DeclarationIsCriteria, DeclarationIsHistoryCriteria, DeclarationIsAdminService, DeclarationIsConverter> {
+public class    DeclarationIsRestAdmin  extends AbstractController<DeclarationIs, DeclarationIsDto, DeclarationIsHistory, DeclarationIsCriteria, DeclarationIsHistoryCriteria, DeclarationIsAdminService, DeclarationIsConverter> {
+
+    @Autowired
+    private final DeclarationIsService declarationIsService;
 
 
+    @PostMapping("calculate/")
+    public void calculate(@RequestBody DeclarationIsDto dto) {
+         declarationIsService.calculate(dto);
+    }
 
     @ApiOperation("Exporte pdf")
     @PostMapping("exportPdf/")
@@ -169,8 +176,9 @@ public class DeclarationIsRestAdmin  extends AbstractController<DeclarationIs, D
     public ResponseEntity<Integer> getHistoryDataSize(@RequestBody DeclarationIsHistoryCriteria criteria) throws Exception {
         return super.getHistoryDataSize(criteria);
     }
-    public DeclarationIsRestAdmin (DeclarationIsAdminService service, DeclarationIsConverter converter) {
+    public DeclarationIsRestAdmin (DeclarationIsAdminService service, DeclarationIsConverter converter, DeclarationIsService declarationIsService) {
         super(service, converter);
+        this.declarationIsService = declarationIsService;
     }
 
 
