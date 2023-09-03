@@ -6,7 +6,7 @@
 
                                                 <div class="field col-12 md:col-3">
                                                     <label for="1">{{'declarationIsDateDeclaration' | translate}}</label>
-                                                    <p-calendar appendTo="body" id="1"  [showTime]="true" [showSeconds]="false" placeholder="{{'declarationIsDateDeclaration' | translate}}"  [(ngModel)]="item.dateDeclaration"
+                                                    <p-calendar  appendTo="body" id="1"  [showTime]="true" [showSeconds]="false" placeholder="{{'declarationIsDateDeclaration' | translate}}"  [(ngModel)]="item.dateDeclaration"
                                                             dateFormat="{{dateFormat}}"  >
                                                     </p-calendar>
                                                     
@@ -31,7 +31,7 @@
                                                 <p-dropdown  appendTo="body"  [options]="societes" [(ngModel)]="item.societe" id="4" [filter]="true" filterMatchMode="contains"
                                                         [showClear]="true" optionLabel="ice" placeholder="{{'declarationIsSociete' | translate}}"  >
                                                 </p-dropdown>
-                                                
+                                                <button class="btn-success" (click)="calculate()">calculate</button>
                                             </div>
                                                 <div class="field col-12 md:col-3">
                                                     <label for="5">{{'declarationIsTotalCharge' | translate}}</label>
@@ -56,7 +56,7 @@
 
                                             <div class="field col-11 md:col-2">
                                                 <label for="8">{{'declarationIsTauxIs' | translate}}</label>
-                                                <p-dropdown  appendTo="body"  [options]="tauxIss" [(ngModel)]="item.tauxIs" id="8" [filter]="true" filterMatchMode="contains"
+                                                <p-dropdown  appendTo="body"  [options]="tauxIss" [(ngModel)]="item.tauxIs" (ngModelChange)="test(item.tauxIs)" id="8" [filter]="true" filterMatchMode="contains"
                                                         [showClear]="true" optionLabel="id" placeholder="{{'declarationIsTauxIs' | translate}}"  >
                                                 </p-dropdown>
                                                 

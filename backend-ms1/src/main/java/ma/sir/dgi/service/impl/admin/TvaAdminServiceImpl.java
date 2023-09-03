@@ -4,12 +4,10 @@ import ma.sir.dgi.bean.core.DeclarationTva;
 import ma.sir.dgi.bean.core.FactureCharge;
 import ma.sir.dgi.bean.core.FactureProduit;
 import ma.sir.dgi.bean.core.Societe;
-import ma.sir.dgi.dao.facade.core.FactureChargeDao;
-import ma.sir.dgi.dao.facade.core.FactureProduitDao;
-import ma.sir.dgi.dao.facade.core.TauxRetardTvaDao;
-import ma.sir.dgi.dao.facade.core.TvaDao;
+import ma.sir.dgi.dao.facade.core.*;
 import ma.sir.dgi.service.facade.admin.TvaAdminService;
 import ma.sir.dgi.ws.dto.DeclarationIsDto;
+import ma.sir.dgi.ws.dto.DeclarationTvaDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,8 +31,9 @@ public class TvaAdminServiceImpl implements TvaAdminService {
         this.tauxRetardTvaDao = tauxRetardTvaDao;
     }
 
+
     @Override
-    public int save(DeclarationIsDto declarationIsDto) {
+    public int save(DeclarationTvaDto declarationIsDto) {
         DeclarationTva check = this.tvaDao.findByTrimistreAndAnneeAndSocieteId(declarationIsDto.getTrimistre()
                 , declarationIsDto.getAnnee()
                 , declarationIsDto.getSociete().getId());
@@ -47,11 +46,11 @@ public class TvaAdminServiceImpl implements TvaAdminService {
             declarationTva.setDateDeclaration(localDateTime);
             declarationTva.setTrimistre(declarationIsDto.getTrimistre());
             declarationTva.setAnnee(declarationIsDto.getAnnee());
-            List<FactureProduit> factureProduits = this.factureProduitDao.findBySocieteIdAndSocieteDernierAnneePayerTvaAndSocieteDernierTrimestrePayerTva
+            List<FactureProduit> factureProduits = this.factureProduitDao.findBySocieteIdAndDeclarationIsAnneeAndDeclarationIsTrimistre
                     (declarationIsDto.getSociete().getId(), declarationIsDto.getAnnee(), declarationIsDto.getTrimistre());
             declarationTva.setTotalTvaCollecte(calculateTotalTvaCollecte(factureProduits));
 
-            List<FactureCharge> factureCharges = this.factureChargeDao.findBySocieteIdAndSocieteDernierAnneePayerTvaAndSociete_DernierTrimestrePayerTva
+            List<FactureCharge> factureCharges = this.factureChargeDao.findBySocieteIdAndDeclarationIsAnneeAndDeclarationIsTrimistre
                     (declarationIsDto.getSociete().getId(), declarationIsDto.getAnnee(), declarationIsDto.getTrimistre());
             declarationTva.setTotalTvaDue(calculateTotalTvaDue(factureCharges));
             calculateMontantTvaDifference(declarationTva);

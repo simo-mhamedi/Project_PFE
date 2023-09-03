@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 public class DeclarationTvaDto  extends AuditBaseDto {
 
     private String dateDeclaration ;
+    private String dateDeclarationStr ;
     private Integer trimistre  = 0 ;
     private Integer annee  = 0 ;
     private BigDecimal totalTvaCollecte  ;
@@ -107,6 +108,11 @@ public class DeclarationTvaDto  extends AuditBaseDto {
     }
 
 
+    public String getDateDeclarationStr() {
+        return dateDeclarationStr;
+    }
 
-
+    public void setDateDeclarationStr(String dateDeclarationStr) {
+        this.dateDeclarationStr = dateDeclarationStr;
+    }
 }

@@ -17,7 +17,7 @@ public interface FactureProduitDao extends AbstractRepository<FactureProduit,Lon
     int deleteBySocieteId(Long id);
     List<FactureProduit> findByDeclarationIsId(Long id);
     int deleteByDeclarationIsId(Long id);
-    List<FactureProduit> findBySocieteIdAndSocieteDernierAnneePayerTvaAndSocieteDernierTrimestrePayerTva
+    List<FactureProduit> findBySocieteIdAndDeclarationIsAnneeAndDeclarationIsTrimistre
             (Long id,Integer annee,Integer Trimestre);
     @Query("SELECT SUM(f.montantHt) FROM FactureProduit f WHERE f.societe.id = :societeId AND f.declarationIs.annee = :annee AND f.declarationIs.trimistre = :trimestre")
     BigDecimal sumMontantHtBySocieteIdAndAnneeAndTrimestre(

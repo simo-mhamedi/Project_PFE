@@ -19,7 +19,7 @@ public interface FactureChargeDao extends AbstractRepository<FactureCharge,Long>
     List<FactureCharge> findByDeclarationIsId(Long id);
     int deleteByDeclarationIsId(Long id);
     List<FactureCharge> findBySocieteIce(String ice);
-    List<FactureCharge> findBySocieteIdAndSocieteDernierAnneePayerTvaAndSociete_DernierTrimestrePayerTva
+    List<FactureCharge> findBySocieteIdAndDeclarationIsAnneeAndDeclarationIsTrimistre
             (Long id,Integer annee,Integer Trimestre);
     @Query("SELECT SUM(f.montantHt) FROM FactureCharge f WHERE f.societe.id = :societeId AND f.declarationIs.annee = :annee AND f.declarationIs.trimistre = :trimestre")
     BigDecimal sumMontantHtBySocieteIdAndAnneeAndTrimestre(

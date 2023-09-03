@@ -3,7 +3,7 @@ export const environment = {
   dateFormatCreate: 'dd/mm/yy',
   dateFormatEdit: 'dd/mm/yy',
   dateFormatView: 'dd/mm/yy',
-  dateFormatList: 'dd/MM/yyyy',
+  dateFormatList: 'dd/MM/yy',
   trueValue: 'Vrai',
   falseValue: 'Faux',
   emptyForExport: '-----',

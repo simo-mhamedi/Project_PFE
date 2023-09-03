@@ -2,6 +2,7 @@ package ma.sir.dgi.ws.facade.admin;
 
 import ma.sir.dgi.service.facade.admin.TvaAdminService;
 import ma.sir.dgi.ws.dto.DeclarationIsDto;
+import ma.sir.dgi.ws.dto.DeclarationTvaDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ public class TvaWsAdmin {
         this.tvaAdminService = tvaAdminService;
     }
     @PostMapping("/")
-    public  int save(@RequestBody DeclarationIsDto declarationIsDto)
+    public  int save(@RequestBody DeclarationTvaDto declarationIsDto)
     {
         return this.tvaAdminService.save(declarationIsDto);
     }

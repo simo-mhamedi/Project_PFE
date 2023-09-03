@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 
 import * as moment from 'moment';
@@ -27,6 +27,7 @@ export class DeclarationIsService extends AbstractService<DeclarationIsDto, Decl
         this.setHttp(http);
         this.setApi(environment.apiUrl + 'admin/declarationIs/');
     }
+    private baseUrl="http://localhost:8036/api/admin/";
 
     public constrcutDto(): DeclarationIsDto {
         return new DeclarationIsDto();
@@ -34,5 +35,10 @@ export class DeclarationIsService extends AbstractService<DeclarationIsDto, Decl
 
     public constrcutCriteria(): DeclarationIsCriteria {
         return new DeclarationIsCriteria();
+    }
+
+    calculate(declarationIsDto: DeclarationIsDto) {
+        // Send the declarationIsDto object in the request body
+        return this.http.post<any>(this.baseUrl + 'declarationIs/calculate/', declarationIsDto);
     }
 }
