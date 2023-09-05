@@ -51,7 +51,17 @@ export class DeclarationIsEditAdminComponent extends AbstractEditController<Decl
         this.item.dateDeclaration = this.declarationIsService.format(this.item.dateDeclaration);
     }
 
-
+    calculate() {    
+        this.service.calculate(this.item).subscribe((s) => {
+          this.item.montantImpot=s.montantImpot;
+          this.item.resultatApresImpot=s.resultatApresImpot;
+          this.item.resultatAvantImpot=s.resultatAvantImpot;
+          this.item.totalCharge=s.totalCharge;
+          this.item.totalProduit=s.totalProduit;
+          this.item.tauxIs=s.tauxIs;      
+        });
+      }
+    
 
     public validateFactureCharges(){
         this.errorMessages = new Array();

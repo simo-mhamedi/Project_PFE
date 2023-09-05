@@ -81,7 +81,7 @@ export class DeclarationIsCreateAdminComponent
   
     // Log the updated TauxIsDto object
   }
-  calculate() {
+  calculate() {    
     this.service.calculate(this.item).subscribe((s) => {
       this.item.montantImpot=s.montantImpot;
       this.item.resultatApresImpot=s.resultatApresImpot;

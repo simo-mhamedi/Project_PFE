@@ -34,62 +34,10 @@
                                             <p-dropdown   appendTo="body" [options]="societes" [(ngModel)]="item.societe" id="4"[filter]="true" filterMatchMode="contains"
                                                     [showClear]="true" optionLabel="ice" placeholder="{{'declarationIsSociete' | translate}}"  >
                                             </p-dropdown>
-                                            
+
                                         </div>
 
-                                        <div class="field col-12 md:col-3">
-                                            <label for="5">{{'declarationIsTotalCharge' | translate}}</label>
-                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="5"
-                                                           placeholder="{{'declarationIsTotalCharge' | translate}}" [(ngModel)]="item.totalCharge"  >
-                                            </p-inputNumber>
-                                            
-                                        </div>
-
-                                        <div class="field col-12 md:col-3">
-                                            <label for="6">{{'declarationIsTotalProduit' | translate}}</label>
-                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="6"
-                                                           placeholder="{{'declarationIsTotalProduit' | translate}}" [(ngModel)]="item.totalProduit"  >
-                                            </p-inputNumber>
-                                            
-                                        </div>
-
-                                        <div class="field col-12 md:col-3">
-                                            <label for="7">{{'declarationIsResultatAvantImpot' | translate}}</label>
-                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="7"
-                                                           placeholder="{{'declarationIsResultatAvantImpot' | translate}}" [(ngModel)]="item.resultatAvantImpot"  >
-                                            </p-inputNumber>
-                                            
-                                        </div>
-
-                                    <div class="field col-11 md:col-2">
-                                            <label for="8">{{'declarationIsTauxIs' | translate}}</label>
-                                            <p-dropdown   appendTo="body" [options]="tauxIss" [(ngModel)]="item.tauxIs" id="8"[filter]="true" filterMatchMode="contains"
-                                                    [showClear]="true" optionLabel="id" placeholder="{{'declarationIsTauxIs' | translate}}"  >
-                                            </p-dropdown>
-                                            
-                                        </div>
-                                        <div class="col-1">
-                                            <label></label>
-                                            <button pButton pRipple type="button" icon="pi pi-plus" (click)="openCreateTauxIs('TauxIs')" class="p-button-success one-colonne-btn-success-align"></button>
-                                        </div>
-
-                                        <div class="field col-12 md:col-3">
-                                            <label for="9">{{'declarationIsMontantImpot' | translate}}</label>
-                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="9"
-                                                           placeholder="{{'declarationIsMontantImpot' | translate}}" [(ngModel)]="item.montantImpot"  >
-                                            </p-inputNumber>
-                                            
-                                        </div>
-
-                                        <div class="field col-12 md:col-3">
-                                            <label for="10">{{'declarationIsResultatApresImpot' | translate}}</label>
-                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="10"
-                                                           placeholder="{{'declarationIsResultatApresImpot' | translate}}" [(ngModel)]="item.resultatApresImpot"  >
-                                            </p-inputNumber>
-                                            
-                                        </div>
-
-
+                              
                         </div>
                     </p-tabPanel>
 
