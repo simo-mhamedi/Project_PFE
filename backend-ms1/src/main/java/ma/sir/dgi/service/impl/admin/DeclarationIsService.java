@@ -1,5 +1,6 @@
 package ma.sir.dgi.service.impl.admin;
 
+import ma.sir.dgi.bean.core.DeclarationIs;
 import ma.sir.dgi.bean.core.TauxIs;
 import ma.sir.dgi.dao.facade.core.*;
 import ma.sir.dgi.ws.dto.DeclarationIsDto;
@@ -24,31 +25,5 @@ public class DeclarationIsService {
         this.tauxIsDao = tauxIsDao;
     }
 
-    public DeclarationIsDto calculate(DeclarationIsDto declarationIsDto){
-        DeclarationIsDto declarationIsDto1 = new DeclarationIsDto();
-        declarationIsDto1.setTotalCharge(factureChargeDao
-                .sumMontantHtBySocieteIdAndAnneeAndTrimestre(declarationIsDto.getSociete().getId(),declarationIsDto.getAnnee(),
-                        declarationIsDto.getTrimistre()));
 
-        declarationIsDto1.setTotalProduit(factureProduitDao
-                .sumMontantHtBySocieteIdAndAnneeAndTrimestre(declarationIsDto.getSociete().getId(),declarationIsDto.getAnnee(),
-                        declarationIsDto.getTrimistre()));
-
-        declarationIsDto1.setResultatAvantImpot(declarationIsDto1.getTotalProduit().subtract(declarationIsDto1.getTotalCharge()));
-        TauxIs tauxIs=tauxIsDao.findTauxIsInRange(declarationIsDto1.getResultatAvantImpot());
-        TauxIsDto tauxIsDto=new TauxIsDto();
-
-        tauxIsDto.setId(tauxIs.getId());
-        tauxIsDto.setPourcentage(tauxIs.getPourcentage());
-        tauxIsDto.setResultatMin(tauxIs.getResultatMin());
-        tauxIsDto.setResultatMax(tauxIs.getResultatMax());
-        tauxIsDto.setCotisationMinimale(tauxIs.getCotisationMinimale());
-        if(tauxIs !=null)
-        {
-            declarationIsDto1.setMontantImpot(tauxIs.getPourcentage().multiply(declarationIsDto1.getResultatAvantImpot()));
-        }
-        declarationIsDto1.setResultatApresImpot(declarationIsDto1.getResultatAvantImpot().subtract(declarationIsDto1.getMontantImpot()));
-        declarationIsDto1.setTauxIs(tauxIsDto);
-        return  declarationIsDto1;
-    }
 }

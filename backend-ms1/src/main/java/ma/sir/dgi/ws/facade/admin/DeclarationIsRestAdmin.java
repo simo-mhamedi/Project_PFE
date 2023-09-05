@@ -35,10 +35,6 @@ public class    DeclarationIsRestAdmin  extends AbstractController<DeclarationIs
     private final DeclarationIsService declarationIsService;
 
 
-    @PostMapping("calculate/")
-    public DeclarationIsDto calculate(@RequestBody DeclarationIsDto dto) {
-        return declarationIsService.calculate(dto);
-    }
 
     @ApiOperation("Exporte pdf")
     @PostMapping("exportPdf/")

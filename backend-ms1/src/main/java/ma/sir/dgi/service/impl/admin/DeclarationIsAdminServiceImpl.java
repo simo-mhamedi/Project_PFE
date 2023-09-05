@@ -1,10 +1,14 @@
 package ma.sir.dgi.service.impl.admin;
 
 import ma.sir.dgi.bean.core.DeclarationIs;
+import ma.sir.dgi.bean.core.TauxIs;
 import ma.sir.dgi.bean.history.DeclarationIsHistory;
 import ma.sir.dgi.dao.criteria.core.DeclarationIsCriteria;
 import ma.sir.dgi.dao.criteria.history.DeclarationIsHistoryCriteria;
 import ma.sir.dgi.dao.facade.core.DeclarationIsDao;
+import ma.sir.dgi.dao.facade.core.FactureChargeDao;
+import ma.sir.dgi.dao.facade.core.FactureProduitDao;
+import ma.sir.dgi.dao.facade.core.TauxIsDao;
 import ma.sir.dgi.dao.facade.history.DeclarationIsHistoryDao;
 import ma.sir.dgi.dao.specification.core.DeclarationIsSpecification;
 import ma.sir.dgi.service.facade.admin.DeclarationIsAdminService;
@@ -29,14 +33,16 @@ import ma.sir.dgi.service.facade.admin.FactureProduitAdminService ;
 import ma.sir.dgi.service.facade.admin.SocieteAdminService ;
 import ma.sir.dgi.service.facade.admin.TauxIsAdminService ;
 
-
-import java.util.List;
 @Service
 public class DeclarationIsAdminServiceImpl extends AbstractServiceImpl<DeclarationIs,DeclarationIsHistory, DeclarationIsCriteria, DeclarationIsHistoryCriteria, DeclarationIsDao,
 DeclarationIsHistoryDao> implements DeclarationIsAdminService {
     public static final String TEMPLATE = "template/declarationIs.vm";
     public static final String FILE_NAME = "declarationIs.pdf";
+    @Autowired
+    private final FactureProduitDao factureProduitDao;
+    private final FactureChargeDao factureChargeDao;
 
+    private final TauxIsDao tauxIsDao;
     @Override
     public HttpEntity<byte[]> createPdf(DeclarationIsDto dto) throws Exception{
         return velocityPdf.createPdf(FILE_NAME, TEMPLATE, dto);
@@ -44,6 +50,8 @@ DeclarationIsHistoryDao> implements DeclarationIsAdminService {
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = false)
     public DeclarationIs create(DeclarationIs t) {
+
+
         super.create(t);
         if (t.getFactureCharges() != null) {
                 t.getFactureCharges().forEach(element-> {
@@ -57,6 +65,24 @@ DeclarationIsHistoryDao> implements DeclarationIsAdminService {
                     factureProduitService.create(element);
             });
         }
+
+        t.setTotalCharge(factureChargeDao
+                .sumMontantHtBySocieteIdAndAnneeAndTrimestre(t.getSociete().getId(),t.getAnnee(),
+                        t.getTrimistre()));
+
+        t.setTotalProduit(factureProduitDao
+                .sumMontantHtBySocieteIdAndAnneeAndTrimestre(t.getSociete().getId(),t.getAnnee(),
+                        t.getTrimistre()));
+
+        t.setResultatAvantImpot(t.getTotalProduit().subtract(t.getTotalCharge()));
+        TauxIs tauxIs=tauxIsDao.findTauxIsInRange(t.getResultatAvantImpot());
+        if(tauxIs !=null)
+        {
+            t.setMontantImpot(tauxIs.getPourcentage().multiply(t.getResultatAvantImpot()));
+        }
+        t.setResultatApresImpot(t.getMontantImpot().subtract(t.getResultatAvantImpot()));
+        t.setTauxIs(tauxIs);
+        super.update(t);
         return t;
     }
 
@@ -120,8 +146,11 @@ DeclarationIsHistoryDao> implements DeclarationIsAdminService {
     @Autowired
     private VelocityPdf velocityPdf;
 
-    public DeclarationIsAdminServiceImpl(DeclarationIsDao dao, DeclarationIsHistoryDao historyDao) {
+    public DeclarationIsAdminServiceImpl(DeclarationIsDao dao, DeclarationIsHistoryDao historyDao, DeclarationIsService declarationIsService, FactureProduitDao factureProduitDao, FactureChargeDao factureChargeDao, TauxIsDao tauxIsDao) {
         super(dao, historyDao);
+        this.factureProduitDao = factureProduitDao;
+        this.factureChargeDao = factureChargeDao;
+        this.tauxIsDao = tauxIsDao;
     }
 
 }
