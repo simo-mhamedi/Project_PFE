@@ -75,13 +75,14 @@ DeclarationIsHistoryDao> implements DeclarationIsAdminService {
                         t.getTrimistre()));
 
         t.setResultatAvantImpot(t.getTotalProduit().subtract(t.getTotalCharge()));
-        TauxIs tauxIs=tauxIsDao.findTauxIsInRange(t.getResultatAvantImpot());
-        if(tauxIs !=null)
+        List<TauxIs> tauxIsList=tauxIsDao.findTauxIsInRange(t.getResultatAvantImpot());
+        if(tauxIsList !=null  && !tauxIsList.isEmpty())
         {
+            TauxIs tauxIs = tauxIsList.get(0); // Get the first TauxIs from the list
             t.setMontantImpot(tauxIs.getPourcentage().multiply(t.getResultatAvantImpot()));
+            t.setTauxIs(tauxIs);
         }
         t.setResultatApresImpot(t.getMontantImpot().subtract(t.getResultatAvantImpot()));
-        t.setTauxIs(tauxIs);
         super.update(t);
         return t;
     }

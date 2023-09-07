@@ -13,6 +13,9 @@ import java.util.List;
 @Repository
 public interface TauxIsDao extends AbstractRepository<TauxIs,Long>  {
 
-    @Query("SELECT t FROM TauxIs t WHERE t.resultatMax >= :mantant AND t.resultatMin <= :mantant")
-    TauxIs findTauxIsInRange(@Param("mantant") BigDecimal mantant);
+    @Query(value = "SELECT t FROM TauxIs t WHERE t.resultatMax >= :montant AND t.resultatMin <= :montant ORDER BY t.resultatMax ASC")
+    List<TauxIs> findTauxIsInRange(@Param("montant") BigDecimal montant);
+
+
+
 }
