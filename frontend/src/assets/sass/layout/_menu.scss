@@ -6,6 +6,7 @@
         overflow: auto;
         z-index: 999;
 
+
         .layout-profile {
             .layout-profile-button {
                 padding: 3em 0;
@@ -196,6 +197,8 @@
 
         .menu-scroll-content {
             padding-bottom: 120px;
+            border-radius:97px;
+            box-shadow: 10px 10px 5px gray
         }
     }
 
@@ -205,6 +208,7 @@
             border: 1px solid $menuBorderColor;
             border-left: 0;
             border-top: 0;
+
 
             .layout-profile {
                 border-bottom: 1px solid $menuitemSeparator;
@@ -329,6 +333,7 @@
             background-color: $darkMenuBgColor;
             border: 1px solid $darkMenuBorderColor;
             border-left: 0;
+
 
             .layout-profile {
                 border-bottom: 1px solid $darkMenuitemSeparator;
@@ -469,6 +474,7 @@
                 width: 288px;
                 left: 0;
                 @include transition(left $transitionDuration);
+
             }
 
             .layout-main {
@@ -483,6 +489,7 @@
             &.layout-static-inactive {
                 .layout-menu-container {
                     left: -288px;
+
                 }
 
                 .layout-main {
@@ -493,6 +500,7 @@
             &.layout-static-inactive-restore {
                 .layout-menu-container {
                     @include transition(none);
+
                 }
             }
         }
@@ -503,11 +511,13 @@
                 left: -288px;
                 @include shadow(0 0px 10px 0 rgba(0, 0, 0, 0.16));
                 @include transition(left $transitionDuration);
+
             }
 
             &.layout-overlay-active {
                 .layout-menu-container {
                     left: 0;
+
                 }
             }
         }
@@ -521,6 +531,7 @@
             .layout-menu-container {
                 width: 57px;
                 overflow: visible;
+
 
                 .layout-profile {
                     .layout-profile-button {
@@ -692,6 +703,8 @@
                 padding: .5em 5em;
 
 
+
+
                 .menu-scroll-content {
                     padding-bottom: 170px;
                 }
@@ -780,6 +793,7 @@
                 .menu-scroll-content {
                     width: 100%;
                     padding: 0;
+
                 }
 
                 .layout-menu {
@@ -831,6 +845,7 @@
                 .menu-scroll-content {
                     width: 100%;
                     padding: 0;
+
                 }
             }
         }
@@ -855,6 +870,7 @@
                     height: 16px;
                 }
             }
+
         }
 
         .layout-menu-container {
@@ -863,6 +879,7 @@
             left: -288px;
             @include shadow(5px 0px 10px -5px rgba(0, 0, 0, 0.16));
             @include transition(left $transitionDuration);
+
         }
 
         .layout-main {
@@ -887,6 +904,7 @@
         &.layout-mobile-active {
             .layout-menu-container {
                 left: 0;
+
             }
 
             .layout-content-mask {

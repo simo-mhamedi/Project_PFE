@@ -3,24 +3,25 @@
         <div class="login-panel-content">
             <div class="grid" [formGroup]="loginForm">
                 <div class="col-12 p-sm-6 md:col-6 logo-container">
-                    <img src="../../../assets/layout/images/logo-roma.svg" />
-                    <span class="guest-sign-in">Welcome, please use the form to sign-in </span>
+                    <img src="../../../assets/layout/images/img.png"/>
+                    <span class="guest-sign-in" style="font-size: 20px;
+    font-family: Gotham, Tahoma, sans-serif;">Welcome Admin </span>
                 </div>
 
                 <div class="col-12 username-container">
                     <!-- <h:panelGroup> -->
-                    <label>Username</label>
+                    <label style="font-weight: bold;font-size: medium">Username</label>
                     <div class="login-input">
                         <input class="mb-2 mr-2" type="text" pInputText formControlName="username" id="1" required
-                            autofocus />
+                            autofocus  style="  border-radius: 90px;"/>
                     </div>
                     <!-- </h:panelGroup> -->
                 </div>
                 <div class="col-12 password-container">
                     <!-- <h:panelGroup> -->
-                    <label>Password</label>
+                    <label style="font-weight: bold;font-size: medium">Password</label>
                     <div class="login-input">
-                        <input pPassword type="password" [feedback]="false" formControlName="password" />
+                        <input pPassword type="password" [feedback]="false" formControlName="password"  style="  border-radius: 90px;"/>
                     </div>
                     <!-- </h:panelGroup> -->
                 </div>
@@ -28,10 +29,10 @@
                 </div>
 
                 <div class="col-6 md:col-12">
-                    <button pButton type="button" icon="pi pi-check" label="Sign In" (click)="submit()"></button>
+                    <button pButton type="button" icon="pi pi-check" label="Sign In" (click)="submit()" style="border-radius: 90px;font-weight: bold;font-size: medium"></button>
                 </div>
                 <div class="col-6 md:col-12">
-                    <button pButton type="button" icon="pi pi-check" class="p-button p-button-success" label="Register" (click)="register()"></button>
+                    <button pButton type="button" icon="pi pi-check" class="p-button p-button-success" label="Register" (click)="register()"  style="font-weight: bold;font-size: medium;border-radius: 90px;"></button>
                 </div>
             </div>
         </div>

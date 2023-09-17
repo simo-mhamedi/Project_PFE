@@ -1,4 +1,5 @@
-<div class="layout-topbar">
+
+<div class="layout-topbar" style="background-color:deepskyblue;border-radius:97px; box-shadow: 10px 10px 5px gray">
 
     <a class="layout-right-panel-button layout-topbar-icon" (click)="appMain.onRightMenuClick($event)" href="#">
         <i class="pi pi-ellipsis-v"></i>
@@ -9,14 +10,14 @@
     </a>
 
     <a href="#" class="layout-topbar-logo">
-        <span style="font-size: 2rem;color: white;font-weight: 900;">Project tauxIs</span>
+        <img src="../../../favicon.ico" style="position: relative;width: 87px;height: 4.5rem;padding-left: -58px;" />
+
+        <span style="font-size: 2rem;color: white;font-weight: 900;position: absolute;margin-left: 1px;margin-top: 12px;">QuickCompta</span>
     </a>
-
-
     <ul class="topbar-menu">
         <li class="user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarUserMenuActive}">
             <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)" *ngIf="!app.inlineUser">
-                <img src="assets/layout/images/avatar.png" alt="roma-layout" />
+
                 <div class="layout-profile-userinfo">
                     <span class="layout-profile-name">{{authenticatedUser.email}}</span>
                     <span class="layout-profile-name">{{authenticatedUser.prenom}}</span>
