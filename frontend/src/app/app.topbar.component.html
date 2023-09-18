@@ -47,18 +47,23 @@
 
 <div class="app-header header-shadow">
     <div class="app-header__logo">
-        <div class="logo-src"></div>
+        <div>
+            <img src="../../../favicon.ico" style="position: relative;width: 84px;height: 3.5rem;padding-left: -58px;" />
+            <span style="font-size:1.5rem; color:#0f97c7;font-weight:700;position: absolute;margin-left: 1px;margin-top: 12px;">QuickCompta</span>
+        </div>
         <div class="header__pane ml-auto">
             <div>
+
                 <a class="layout-right-panel-button layout-topbar-icon" (click)="appMain.onRightMenuClick($event)" href="#">
                     <i class="pi pi-ellipsis-v"></i>
                 </a>
-            
+
                 <a href="#" class="layout-menu-button layout-topbar-icon" (click)="appMain.onMenuButtonClick($event)">
                     <i class="pi pi-bars"></i>
                 </a>
             </div>
         </div>
+
     </div>
     <div class="app-header__mobile-menu">
         <div>
@@ -77,35 +82,8 @@
                 </span>
             </button>
         </span>
-    </div>    <div class="app-header__content">
-        <div class="app-header-left">
-            <div class="search-wrapper">
-                <div class="input-holder">
-                    <input type="text" class="search-input" placeholder="Type to search">
-                    <button class="search-icon"><span></span></button>
-                </div>
-                <button class="close"></button>
-            </div>
-            <ul class="header-menu nav">
-                <li class="nav-item">
-                    <a href="javascript:void(0);" class="nav-link">
-                        <i class="nav-link-icon fa fa-database"> </i>
-                        Statistics
-                    </a>
-                </li>
-                <li class="btn-group nav-item">
-                    <a href="javascript:void(0);" class="nav-link">
-                        <i class="nav-link-icon fa fa-edit"></i>
-                        Projects
-                    </a>
-                </li>
-                <li class="dropdown nav-item">
-                    <a href="javascript:void(0);" class="nav-link">
-                        <i class="nav-link-icon fa fa-cog"></i>
-                        Settings
-                    </a>
-                </li>
-            </ul>        </div>
+    </div>
+    <div class="app-header__content">
         <div class="app-header-right">
             <div class="header-btn-lg pr-0">
                 <div class="widget-content p-0">
@@ -139,4 +117,4 @@
        
             </div>        </div>
     </div>
-</div> 
+</div>

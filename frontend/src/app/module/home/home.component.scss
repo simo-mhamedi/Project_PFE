@@ -33,7 +33,7 @@
   *::after {
     box-sizing: inherit;
   }
-  
+
   body {
     margin: 0;
     padding: 0;
@@ -61,6 +61,7 @@
   h1 {
     font-size: 2.31rem;
     margin-bottom: 1.125rem;
+    font-family: cursive;
   }
   
   @media (min-width: 64em) {
@@ -72,6 +73,7 @@
   h2 {
     font-size: 1.875rem;
     margin-bottom: 1.5625rem;
+    font-family:cursive;
   }
   
   @media (min-width: 64em) {
@@ -197,6 +199,7 @@
     min-height: 64px;
     z-index:99999;
     background: white;
+    margin-left:5px;
   }
   
   .header.menu-clicked .burger-menu {

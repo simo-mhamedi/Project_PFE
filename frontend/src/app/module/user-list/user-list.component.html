@@ -91,7 +91,7 @@
         </div>
         <div class="field" *ngIf="!user.id">
             <label for="password">password</label>
-            <input id="password" pPassword [(ngModel)]="user.password" required rows="3" cols="20" />
+            <input pPassword [(ngModel)]="user.password" required rows="3" cols="20" />
             <small class="p-error" *ngIf="submitted && !user.password">nom is required.</small>
         </div>
         <div class="field">
