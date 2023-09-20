@@ -78,7 +78,9 @@ public class UserServiceImpl implements UserService {
     public User save(User user) {
     User foundedUserByUsername = findByUsername(user.getUsername());
     User foundedUserByEmail = userDao.findByEmail(user.getEmail());
-    if (foundedUserByUsername != null || foundedUserByEmail != null) return null;
+    if (foundedUserByUsername != null || foundedUserByEmail != null) {
+        return null;
+    }
     else {
     /*if (user.getPassword() == null || user.getPassword().isEmpty()) {
     user.setPassword(bCryptPasswordEncoder.encode(user.getUsername()));
